@@ -14,6 +14,9 @@ app.use(fileUpload({
   useTempFiles:true
 }))
 
+// Подключение ручек
+app.use('/user', require('./routes/userRouter'))
+
 // Подключение к mongoDB
 const URI = process.env.MONGODB_URL
 mongoose.connect(URI, {
@@ -26,11 +29,9 @@ mongoose.connect(URI, {
   console.log('Connected to MongoDB')
 })
 
-app.get('/', (req,res) => {
-  res.json({msg: 'Welcome to server side of project'})
-})
 
 
+// Запуск сервера
 const PORT = process.env.PORT || 5000
 app.listen(PORT, ()=> {
   console.log('Server running on port', PORT)
