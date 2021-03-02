@@ -16,6 +16,7 @@ app.use(fileUpload({
 
 // Подключение ручек
 app.use('/user', require('./routes/userRouter'))
+app.use('/api', require('./routes/categoryRouter'))
 
 // Подключение к mongoDB
 const URI = process.env.MONGODB_URL
